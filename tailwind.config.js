@@ -19,11 +19,12 @@ module.exports = {
       colors: {
         'my-green-fade': 'rgba(0, 200, 83, 0.5)',
       'my-green': '#00c853',
-      'borderbtn': '#00712F'
+      'borderbtn': '#00712F',
+      'inputBorder' : 'rgba(0, 0, 0, 0.2)'
     },
     spacing: {
       '99px': '99px', '6vw': '6vw','5vw': '5vw','1vw': '1vw','8vw': '8vw','3vw': '3vw','.5vw': '.5vw','200px': '200px',
-   '80vw': '80vw','50vw': '50vw', }},
+   '80vw': '80vw','50vw': '50vw', '102': '394px', '30vw': '30vw', '278px': '278px', }},
     textDecorationThickness: {
       5: '5px',
     },
