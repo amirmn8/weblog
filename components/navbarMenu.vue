@@ -17,7 +17,7 @@
         <li class="liMenu"><p>خدمات</p></li>
         <li class="liMenu"><p>محصولات</p></li>
         <li class="liMenu"><p>خانه</p></li>
-        <li class="liMenu">
+        <li>
           <svg
             width="82"
             height="82"
