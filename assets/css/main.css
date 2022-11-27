@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+.activeMenu{
+   @apply border-b-4 text-my-green border-b-my-green
+}}
+.liMenu{
+    @apply px-1vw h-full items-center flex cursor-pointer
+}
+.outlineBtn{
+  @apply  border border-my-green text-my-green cursor-pointer rounded-2xl flex items-center justify-center hover:shadow-my-btn active:shadow-foBtn focus:border-2 focus:shadow-none
+}
+.fillBtn{
+  @apply  bg-my-green text-white cursor-pointer rounded-2xl flex items-center justify-center hover:shadow-my-fill-btn active:border-0 active:bg-my-green-fade focus:border-2 focus:border-borderbtn
+}
+*{
+font-family: 'IRANYekan';
+font-size: large;
+}
+
+@font-face {
+    font-family: 'IRANYekan';
+    src: local('IRANYekan'), url(../fonts/Yekan.ttf) format('ttf');
+    src: local('IRANYekan'), url(../fonts/Yekan.eot) format('eot');
+    src: local('IRANYekan'), url(../fonts/Yekan.woff) format('woff');
+}
