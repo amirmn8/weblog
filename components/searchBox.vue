@@ -1,5 +1,5 @@
 <template>
-  <div class="relative h-60px w-760px">
+  <div class="relative h-60px w-760px mb-12">
     <input
       style="direction: rtl"
       placeholder="جست و جو کنید ..."
