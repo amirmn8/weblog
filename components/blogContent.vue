@@ -49,9 +49,10 @@ const changePage = (page) => {
   paginate(state.postArray);
 };
 const contentSearch = (data) => {
-  let filteredBySearch = state.postArray.filter((post) => {
+  let filteredBySearch = posts.value.filter((post) => {
     if (post?.title.includes(data)) return post;
   });
+  state.postArray = filteredBySearch;
   paginate(filteredBySearch);
 };
 </script>
