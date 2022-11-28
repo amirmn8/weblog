@@ -26,6 +26,9 @@
 .outlineBtn{
   @apply  border border-my-green text-my-green cursor-pointer rounded-2xl flex items-center justify-center hover:shadow-my-btn active:shadow-foBtn focus:border-2 focus:shadow-none
 }
+.outlineBtn-red{
+  @apply  border border-red-600 text-red-600 cursor-pointer rounded-2xl flex items-center justify-center 
+}
 .fillBtn{
   @apply  bg-my-green text-white cursor-pointer rounded-2xl flex items-center justify-center hover:shadow-my-fill-btn active:border-0 active:bg-my-green-fade focus:border-2 focus:border-borderbtn
 }

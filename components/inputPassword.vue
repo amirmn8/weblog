@@ -1,7 +1,14 @@
+<script setup>
+const emit = defineEmits("changePassword");
+const changePassword = (e) => {
+  emit("changePassword", e.target.value);
+};
+</script>
 <template>
   <div class="relative border border-inputBorder rounded-2xl">
     <label class="absolute -top-8 right-0 text-lg">رمز عبور </label>
     <input
+      @input="changePassword"
       style="direction: rtl"
       placeholder=" رمز عبور خود را وارد کنید"
       class="rounded-2xl w-full h-14 pr-12"

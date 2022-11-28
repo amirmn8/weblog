@@ -1,5 +1,42 @@
 <script setup>
+const state = reactive({ accessToken: "", username: "", password: "" });
 const props = defineProps(["displayMenu", "displayLogin"]);
+try {
+  state.accessToken = localStorage.getItem("accessToken")
+    ? localStorage.getItem("accessToken")
+    : "";
+  console.log(state.accessToken);
+} catch (error) {
+  console.log(error);
+}
+const doLogIn = async () => {
+  const logInResponse = await useFetch(
+    "https://challenge.webjar.ir/auth/login",
+    {
+      method: "POST",
+      body: {
+        userName: state.username,
+        password: state.password,
+      },
+    }
+  );
+  if (!logInResponse.data.value) {
+    if (logInResponse.error.value.status === 401) {
+      // رمز یا نام کاربری اشتباه است
+      console.log(logInResponse.error.value.status);
+    } else if (logInResponse.error.value.status === 400) {
+      // یکی از فرم ها خالی است
+      console.log(logInResponse.error.value.status);
+    }
+  } else {
+    state.accessToken = logInResponse.data.value.token.accessToken;
+    window.localStorage.setItem("accessToken", state.accessToken);
+  }
+};
+const doLogOut = () => {
+  localStorage.removeItem("accessToken");
+  state.accessToken = "";
+};
 </script>
 <template>
   <div
@@ -8,8 +45,12 @@ const props = defineProps(["displayMenu", "displayLogin"]);
       class="flex justify-between items-center text-xl h-full w-full xl:mx-200px mx-8">
       <div>
         <li class="liMenu">
+          <exitbutton v-if="state.accessToken" @click="doLogOut" title="خروج" />
           <!-- دکمه -->
-          <outlinebutton @click="displayLogin = 'h-screen'" title="ورود" />
+          <outlinebutton
+            v-else
+            @click="displayLogin = 'h-screen'"
+            title="ورود" />
           <!-- دکمه -->
         </li>
       </div>
@@ -42,7 +83,10 @@ const props = defineProps(["displayMenu", "displayLogin"]);
         <li class="activeMenu py-4 text-center">وبلاگ</li>
         <li class="py-4 text-center">
           <!-- دکمه -->
+          <exitbutton v-if="state.accessToken" title="خروج" />
+
           <outlinebutton
+            v-if="!state.accessToken"
             @click="(displayLogin = 'h-screen'), (displayMenu = 'hidden')"
             title="ورود" />
           <!-- دکمه -->
@@ -70,9 +114,13 @@ const props = defineProps(["displayMenu", "displayLogin"]);
           class="relative transform overflow-hidden px-10 sm:px-30vw py-278px max-h-screen rounded-lg bg-white text-left shadow-xl transition-all">
           <div class="bg-white">
             <h2 class="text-center text-5xl mb-20">ورود به حساب کاربری</h2>
-            <inputUser class="mb-16" />
-            <inputPassword class="mb-12" />
-            <fillbutton class="w-full h-14" title="ورود" />
+            <inputUser
+              @changeUserName="(username) => (state.username = username)"
+              class="mb-16" />
+            <inputPassword
+              @changePassword="(password) => (state.password = password)"
+              class="mb-12" />
+            <fillbutton @click="doLogIn" class="w-full h-14" title="ورود" />
           </div>
           <Icons-closeIcon
             @click="displayLogin = 'h-0'"
