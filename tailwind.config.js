@@ -24,13 +24,13 @@ module.exports = {
       
     }  ,
       colors: {
-        'my-green-fade': 'rgba(0, 200, 83, 0.5)',
+      'my-green-fade': 'rgba(0, 200, 83, 0.5)',
       'my-green': '#00c853',
       'borderbtn': '#00712F',
       'inputBorder' : 'rgba(0, 0, 0, 0.2)'  ,
       'miniText' : 'rgba(55, 55, 55, 1)',
       'category' : '#7b7b7b',
-  
+      'my-red' : '#FE5656',
       
     },
     spacing: {
@@ -51,5 +51,5 @@ module.exports = {
 
 
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 }

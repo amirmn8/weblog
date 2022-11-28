@@ -13,8 +13,8 @@ function newData() {
       @input="newData"
       style="direction: rtl"
       placeholder="جست و جو کنید ..."
-      class="h-60px xl:w-760px w-screen shadow-search rounded-2xl pr-12"
-      type="search" />
-    <Icons-Searchicon />
+      class="peer searchInput"
+      type="text" />
+    <Icons-Searchicon class="searchInputIcon" />
   </div>
 </template>

@@ -5,6 +5,21 @@
 .activeMenu{
    @apply border-b-4 text-my-green border-b-my-green
 }
+.inputBtn{
+    @apply bg-white outline-offset-0 ring-0 ring-offset-0 border-0 focus:outline-offset-0 focus:ring-0 focus:ring-offset-0 focus:border-0 rounded-2xl w-full h-14 pr-12 focus:outline-my-green  focus:placeholder:text-white
+}
+.inputIcon{
+    @apply peer-focus:fill-my-green fill-inputBorder
+}
+.inputLable{
+    @apply absolute -top-8 right-0 text-lg peer-focus:text-my-green
+}
+.searchInput{
+    @apply outline-offset-0 ring-0 ring-offset-0 border-0 focus:outline-offset-0 focus:ring-0 focus:ring-offset-0 focus:border-0 h-60px xl:w-760px w-screen shadow-search rounded-2xl pr-12 focus:pr-4 focus:outline-none text-category
+}
+.searchInputIcon{
+    @apply peer-focus:absolute peer-focus:top-4 peer-focus:left-4 peer-focus:fill-my-green fill-category
+}
 .liMenu{
     @apply px-1vw h-full items-center flex cursor-pointer
 }
@@ -15,10 +30,10 @@
     @apply object-cover w-full h-full rounded-r-xl
 }
 .postDetail{
-    @apply flex md:flex-row justify-start items-start md:justify-center md:items-center  mb-auto flex-col 2xl:gap-x-12 xl:gap-x-8 sm:gap-x-4 gap-6 mb-6
+    @apply flex md:flex-row justify-start items-start md:justify-center md:items-center  mb-auto flex-col 2xl:gap-x-4 xl:gap-x-8 sm:gap-x-4 gap-6 
 }
 .postDetailLi{
-    @apply flex justify-center items-center gap-1}
+    @apply flex justify-center items-center gap-2}
     
 .splitText{
     @apply mt-38px md:w-4/6 mb-10 text-miniText text-base font-light

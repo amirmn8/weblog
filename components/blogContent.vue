@@ -61,13 +61,13 @@ const contentSearch = (data) => {
     <searchBox class="mx-auto" @searchContent="(data) => contentSearch(data)" />
     <div
       class="flex flex-col xl:flex-row-reverse justify-center items-center xl:items-start">
-      <div>
+      <div class="pl-16">
         <categoryBox
           @changeCategory="
             (selectedCategory) => filterByCategory(selectedCategory)
           " />
       </div>
-      <div>
+      <div class="xl:w-56vw">
         <postCard
           v-for="(post, index) in state.showingPosts"
           :key="index"

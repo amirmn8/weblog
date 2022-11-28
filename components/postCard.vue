@@ -21,7 +21,9 @@ const props = defineProps([
       <div style="direction: rtl" class="postDetail">
         <div class="postDetailLi">
           <Icons-calendericon />
-          <p class="text-sm font-light">{{ createDate }}</p>
+          <p class="text-sm font-light">
+            {{ createDate }}
+          </p>
         </div>
         <div class="postDetailLi">
           <Icons-commenticon />

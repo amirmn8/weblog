@@ -83,7 +83,7 @@ const doLogOut = () => {
         <li class="activeMenu py-4 text-center">وبلاگ</li>
         <li class="py-4 text-center">
           <!-- دکمه -->
-          <exitbutton v-if="state.accessToken" title="خروج" />
+          <exitbutton v-if="state.accessToken" @click="doLogOut" title="خروج" />
 
           <outlinebutton
             v-if="!state.accessToken"
@@ -124,7 +124,7 @@ const doLogOut = () => {
           </div>
           <Icons-closeIcon
             @click="displayLogin = 'h-0'"
-            class="fixed top-8 left-1/2 z-20 stroke-my-green" />
+            class="absolute top-8 left-8 z-20 stroke-my-green" />
         </div>
       </div>
     </div>
