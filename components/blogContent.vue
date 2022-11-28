@@ -5,22 +5,38 @@ const state = reactive({
   postArray: [],
   page: 1,
 });
-const { data: postCat } = await useFetch(
-  "https://challenge.webjar.ir/post-categories"
-);
-console.log(postCat.value);
 const { data: posts } = await useFetch("https://challenge.webjar.ir/posts");
 posts.value.map((post) => {
   state.postArray.push(post);
 });
-const pagesCount = Math.ceil(state.postArray.length / 10);
-for (let i = 1; i <= pagesCount; i++) {
-  state.pageIndexes.push(i);
-}
+const filterByCategory = (selectedCategories) => {
+  if (!!selectedCategories.length) {
+    let filteredPosts = [];
+    selectedCategories.forEach((selectedCategory) => {
+      posts.value.forEach((post) => {
+        if (post.category === selectedCategory) {
+          filteredPosts.push(post);
+        }
+      });
+    });
+    state.postArray = filteredPosts;
+    paginate(state.postArray);
+  } else {
+    posts.value.map((post) => {
+      state.postArray.push(post);
+    });
+    paginate(state.postArray);
+  }
+};
 const paginate = (postArray) => {
+  state.pageIndexes = [];
+  const pagesCount = Math.ceil(state.postArray.length / 10);
+  for (let i = 1; i <= pagesCount; i++) {
+    state.pageIndexes.push(i);
+  }
   state.showingPosts = postArray.slice(
     (state.page - 1) * 10,
-    (state.page - 1) * 10 + 9
+    (state.page - 1) * 10 + 10
   );
 };
 paginate(state.postArray);
@@ -29,14 +45,14 @@ watch(
   (postArray) => paginate(postArray)
 );
 const changePage = (page) => {
-  console.log(page);
   state.page = page;
   paginate(state.postArray);
 };
 const contentSearch = (data) => {
-  state.postArray = posts.value.filter((post) => {
+  let filteredBySearch = state.postArray.filter((post) => {
     if (post?.title.includes(data)) return post;
   });
+  paginate(filteredBySearch);
 };
 </script>
 <template>
@@ -44,7 +60,12 @@ const contentSearch = (data) => {
     <searchBox class="mx-auto" @searchContent="(data) => contentSearch(data)" />
     <div
       class="flex flex-col xl:flex-row-reverse justify-center items-center xl:items-start">
-      <div><categoryBox /></div>
+      <div>
+        <categoryBox
+          @changeCategory="
+            (selectedCategory) => filterByCategory(selectedCategory)
+          " />
+      </div>
       <div>
         <postCard
           v-for="(post, index) in state.showingPosts"
@@ -55,7 +76,9 @@ const contentSearch = (data) => {
           :coments="post.commentCount"
           :creator="post.author"
           :image="post.introImageUrl.host" />
-        <div class="flex flex-row gap-1 mx-auto justify-center my-8 text-xl">
+        <div
+          v-if="state.pageIndexes.length > 1"
+          class="flex flex-row gap-1 mx-auto justify-center my-8 text-xl">
           <button
             :disabled="state.page === 1"
             class="flex w-12 h-12 shadow-page rounded-lg justify-center items-center mx-4 disabled:fill-my-green-fade fill-my-green">

@@ -1,6 +1,14 @@
 <script setup>
+const emit = defineEmits("changeCategory");
+const state = reactive({ selectedCategory: [] });
 const { data: categories } = await useFetch(
   "https://challenge.webjar.ir/post-categories"
+);
+watch(
+  () => state.selectedCategory,
+  (selectedCategory) => {
+    emit("changeCategory", selectedCategory);
+  }
 );
 </script>
 <template>
@@ -14,7 +22,13 @@ const { data: categories } = await useFetch(
         :key="index"
         class="categoryLi">
         <label for="">{{ category.name }}</label>
-        <input class="w-30px h-30px" type="checkbox" name="" id="" />
+        <input
+          class="w-30px h-30px"
+          type="checkbox"
+          :value="category._id"
+          v-model="state.selectedCategory"
+          name=""
+          id="" />
       </div>
     </div>
   </div>
