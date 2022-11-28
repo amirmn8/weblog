@@ -2,5 +2,4 @@
   <navbarMenu />
   <WeblogHead />
   <blogContent />
-  <login-modal />
 </template>
