@@ -27,7 +27,10 @@ module.exports = {
       'my-green': '#00c853',
       'borderbtn': '#00712F',
       'inputBorder' : 'rgba(0, 0, 0, 0.2)'  ,
-      'miniText' : 'rgba(55, 55, 55, 1)', 'category' : '#7b7b7b'
+      'miniText' : 'rgba(55, 55, 55, 1)',
+      'category' : '#7b7b7b',
+  
+      
     },
     spacing: {
       '99px': '99px', '6vw': '6vw','5vw': '5vw','1vw': '1vw','8vw': '8vw','3vw': '3vw','.5vw': '.5vw','200px': '200px','100px': '100px',

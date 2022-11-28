@@ -4,9 +4,24 @@
 @layer components {
 .activeMenu{
    @apply border-b-4 text-my-green border-b-my-green
-}}
+}
 .liMenu{
     @apply px-1vw h-full items-center flex cursor-pointer
+}
+.cardContainer{
+    @apply flex xl:flex-row flex-col shadow-cardshadow rounded-xl mb-100px xl:w-56vw xl:h-278px
+}
+.cardImage{
+    @apply object-cover w-full h-full rounded-r-xl
+}
+.postDetail{
+    @apply flex md:flex-row justify-start items-start md:justify-center md:items-center flex-col 2xl:gap-x-12 xl:gap-x-8 sm:gap-x-4 gap-6 mb-6
+}
+.postDetailLi{
+    @apply flex justify-center items-center gap-1}
+    
+.splitText{
+    @apply mt-38px md:w-4/6 mb-10 text-miniText text-base font-light
 }
 .outlineBtn{
   @apply  border border-my-green text-my-green cursor-pointer rounded-2xl flex items-center justify-center hover:shadow-my-btn active:shadow-foBtn focus:border-2 focus:shadow-none
@@ -17,9 +32,10 @@
 .categoryLi{
  @apply flex flex-row justify-between items-center mb-8 mr-6 ml-7 text-lg text-category
 }
+}
 *{
 font-family: 'IRANYekan';
-font-size: large;
+
 }
 
 @font-face {
