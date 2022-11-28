@@ -30,13 +30,13 @@ const filterByCategory = (selectedCategories) => {
 };
 const paginate = (postArray) => {
   state.pageIndexes = [];
-  const pagesCount = Math.ceil(state.postArray.length / 10);
+  const pagesCount = Math.ceil(state.postArray.length / 4);
   for (let i = 1; i <= pagesCount; i++) {
     state.pageIndexes.push(i);
   }
   state.showingPosts = postArray.slice(
-    (state.page - 1) * 10,
-    (state.page - 1) * 10 + 10
+    (state.page - 1) * 4,
+    (state.page - 1) * 4 + 4
   );
 };
 paginate(state.postArray);
@@ -57,17 +57,21 @@ const contentSearch = (data) => {
 };
 </script>
 <template>
-  <div class="xl:mx-200px mx-8">
-    <searchBox class="mx-auto" @searchContent="(data) => contentSearch(data)" />
-    <div
-      class="flex flex-col xl:flex-row-reverse justify-center items-center xl:items-start">
-      <div class="pl-16">
+  <div class="lg:mx-200px">
+    <div class="flex justify-center">
+      <searchBox
+        class="mx-auto"
+        @searchContent="(data) => contentSearch(data)" />
+    </div>
+
+    <div class="divCountainer1">
+      <div class="lg:pl-16">
         <categoryBox
           @changeCategory="
             (selectedCategory) => filterByCategory(selectedCategory)
           " />
       </div>
-      <div class="xl:w-56vw">
+      <div class="lg:w-56vw">
         <postCard
           v-for="(post, index) in state.showingPosts"
           :key="index"
@@ -77,24 +81,29 @@ const contentSearch = (data) => {
           :coments="post.commentCount"
           :creator="post.author"
           :image="post.introImageUrl.host" />
-        <div
-          v-if="state.pageIndexes.length > 1"
-          class="flex flex-row gap-1 mx-auto justify-center my-8 text-xl">
+        <div v-if="state.pageIndexes.length > 1" class="divCountainer2">
           <button
+            @click="changePage(state.page - 1)"
             :disabled="state.page === 1"
-            class="flex w-12 h-12 shadow-page rounded-lg justify-center items-center mx-4 disabled:fill-my-green-fade fill-my-green">
+            class="prevBtn">
             <Icons-arrowleft />
           </button>
           <button
             v-for="index in state.pageIndexes"
             :key="index"
             @click="changePage(index)"
-            class="flex w-12 h-12 rounded-lg border border-my-green justify-center items-center text-my-green">
+            :class="
+              state.page == index
+                ? 'text-white bg-my-green border-my-green'
+                : 'text-my-green border-my-green'
+            "
+            class="numBtn">
             {{ index }}
           </button>
           <button
+            @click="changePage(state.page + 1)"
             :disabled="state.page === state.pageIndexes.length"
-            class="flex w-12 h-12 rounded-lg shadow-page justify-center items-center disabled:fill-my-green-fade fill-my-green mx-4">
+            class="prevBtn">
             <Icons-arrowright />
           </button>
         </div>

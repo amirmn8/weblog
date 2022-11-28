@@ -14,8 +14,20 @@
 .inputLable{
     @apply absolute -top-8 right-0 text-lg peer-focus:text-my-green
 }
+.divCountainer1{
+    @apply flex flex-col lg:flex-row-reverse justify-center items-center lg:items-start
+}
+.divCountainer2{
+    @apply flex flex-row gap-1 mx-auto justify-center my-8 text-xl flex-wrap
+}
+.prevBtn{
+    @apply flex w-12 h-12 shadow-page rounded-2xl justify-center items-center mx-4 disabled:fill-my-green-fade fill-my-green
+}
+.numBtn{
+    @apply flex w-12 h-12 rounded-2xl border justify-center items-center
+}
 .searchInput{
-    @apply outline-offset-0 ring-0 ring-offset-0 border-0 focus:outline-offset-0 focus:ring-0 focus:ring-offset-0 focus:border-0 h-60px xl:w-760px w-screen shadow-search rounded-2xl pr-12 focus:pr-4 focus:outline-none text-category
+    @apply outline-offset-0 ring-0 ring-offset-0 border-0 focus:outline-offset-0 focus:ring-0 focus:ring-offset-0 focus:border-0 h-60px lg:w-760px w-screen shadow-search rounded-2xl pr-12 focus:pr-4 focus:outline-none text-category
 }
 .searchInputIcon{
     @apply peer-focus:absolute peer-focus:top-4 peer-focus:left-4 peer-focus:fill-my-green fill-category
@@ -24,19 +36,37 @@
     @apply px-1vw h-full items-center flex cursor-pointer
 }
 .cardContainer{
-    @apply flex xl:flex-row flex-col shadow-cardshadow rounded-xl mb-100px xl:w-56vw 
+    @apply flex sm:flex-row lg:flex-col xl:flex-row flex-col shadow-cardshadow rounded-xl mb-100px xl:w-56vw 
 }
 .cardImage{
     @apply object-cover w-full h-full rounded-r-xl
+}
+.divCountainer3{
+    @apply w-screen lg:w-18vw shadow-cardshadow px-2.5 py-7 rounded-l-2xl justify-self-center
+}
+.checkClass{
+    @apply w-30px h-30px focus:ring-0 focus:ring-offset-0 border-category rounded border-2 focus:text-my-green checked:text-my-green
+}
+.divCountainer4{
+    @apply h-6vw bg-white shadow-mine hidden lg:flex flex-row-reverse items-center justify-center
+}
+.divCountainer5{
+    @apply flex justify-between items-center text-xl h-full w-full xl:mx-200px mx-8
+}
+.modalCountainer{
+    @apply relative transform overflow-hidden px-10 sm:px-30vw py-278px max-h-screen rounded-lg bg-white text-left shadow-xl transition-all
+}
+.modalBig{
+    @apply flex min-h-full items-end justify-center text-center sm:items-center sm:p-0
 }
 .postDetail{
     @apply flex md:flex-row justify-start items-start md:justify-center md:items-center  mb-auto flex-col 2xl:gap-x-4 xl:gap-x-8 sm:gap-x-4 gap-6 
 }
 .postDetailLi{
-    @apply flex justify-center items-center gap-2}
+    @apply flex md:flex-col lg:flex-row justify-center items-center gap-2}
     
 .splitText{
-    @apply mt-38px md:w-4/6 mb-10 text-miniText text-base font-light
+    @apply mt-38px md:w-4/6 lg:w-full xl:w-4/6 mb-10 text-miniText text-base font-light
 }
 .outlineBtn{
   @apply  border border-my-green text-my-green cursor-pointer rounded-2xl flex items-center justify-center hover:shadow-my-btn active:shadow-foBtn focus:border-2 focus:shadow-none

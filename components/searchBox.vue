@@ -7,7 +7,7 @@ function newData() {
 </script>
 
 <template>
-  <div class="relative h-60px w-screen xl:w-760px mb-12 mx-auto">
+  <div class="relative h-60px w-full lg:w-760px mb-12">
     <input
       v-model="state.searchContent"
       @input="newData"

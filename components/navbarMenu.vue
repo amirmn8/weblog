@@ -1,6 +1,12 @@
 <script setup>
-const state = reactive({ accessToken: "", username: "", password: "" });
-const props = defineProps(["displayMenu", "displayLogin"]);
+const state = reactive({
+  accessToken: "",
+  username: "",
+  password: "",
+  errorMsg: "",
+  displayLogin: "h-0",
+});
+const props = defineProps(["displayMenu"]);
 try {
   state.accessToken = localStorage.getItem("accessToken")
     ? localStorage.getItem("accessToken")
@@ -23,10 +29,10 @@ const doLogIn = async () => {
   if (!logInResponse.data.value) {
     if (logInResponse.error.value.status === 401) {
       // رمز یا نام کاربری اشتباه است
-      console.log(logInResponse.error.value.status);
+      state.errorMsg = "نام کاربری یا رمز عبور اشتباه است";
     } else if (logInResponse.error.value.status === 400) {
       // یکی از فرم ها خالی است
-      console.log(logInResponse.error.value.status);
+      state.errorMsg = "یکی از فرم ها خالی است";
     }
   } else {
     state.accessToken = logInResponse.data.value.token.accessToken;
@@ -36,20 +42,19 @@ const doLogIn = async () => {
 const doLogOut = () => {
   localStorage.removeItem("accessToken");
   state.accessToken = "";
+  state.displayLogin = "h-0";
 };
 </script>
 <template>
-  <div
-    class="h-6vw bg-white shadow-mine hidden xl:flex flex-row-reverse items-center justify-center">
-    <ul
-      class="flex justify-between items-center text-xl h-full w-full xl:mx-200px mx-8">
+  <div class="divCountainer4">
+    <ul class="divCountainer5">
       <div>
         <li class="liMenu">
           <exitbutton v-if="state.accessToken" @click="doLogOut" title="خروج" />
           <!-- دکمه -->
           <outlinebutton
-            v-else
-            @click="displayLogin = 'h-screen'"
+            v-if="!state.accessToken"
+            @click="state.displayLogin = 'h-screen'"
             title="ورود" />
           <!-- دکمه -->
         </li>
@@ -67,13 +72,13 @@ const doLogOut = () => {
       </div>
     </ul>
   </div>
-  <div class="flex xl:hidden items-center justify-between p-4">
+  <div class="flex lg:hidden items-center justify-between p-4">
     <Icons-menuIcon
       @click="displayMenu = 'flex'"
       class="w-12 h-12 stroke-my-green" />
     <div
       style="direction: rtl"
-      class="w-screen h-max z-20 fixed top-0 right-0 bg-white flex-col items-center"
+      class="w-screen h-max z-20 fixed top-0 left-0 bg-white flex-col items-center"
       :class="displayMenu">
       <Icons-iconlogo />
       <ul class="flex flex-col gap-4 mx-4 my-4 text-xl">
@@ -87,31 +92,30 @@ const doLogOut = () => {
 
           <outlinebutton
             v-if="!state.accessToken"
-            @click="(displayLogin = 'h-screen'), (displayMenu = 'hidden')"
+            @click="(state.displayLogin = 'h-screen'), (displayMenu = 'hidden')"
             title="ورود" />
           <!-- دکمه -->
         </li>
       </ul>
       <Icons-closeIcon
         @click="displayMenu = 'hidden'"
-        class="fixed top-3 right-3 stroke-my-green" />
+        class="fixed top-3 right-5 stroke-my-green" />
     </div>
   </div>
   <div
+    v-if="!state.accessToken"
     class="relative z-10"
     aria-labelledby="modal-title"
     role="dialog"
-    :class="displayLogin"
+    :class="state.displayLogin"
     aria-modal="true">
     <div
-      :class="displayLogin"
+      :class="state.displayLogin"
       class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
-    <div :class="displayLogin" class="fixed inset-0 z-10 overflow-y-auto">
-      <div
-        class="flex min-h-full items-end justify-center text-center sm:items-center sm:p-0">
-        <div
-          class="relative transform overflow-hidden px-10 sm:px-30vw py-278px max-h-screen rounded-lg bg-white text-left shadow-xl transition-all">
+    <div :class="state.displayLogin" class="fixed inset-0 z-10 overflow-y-auto">
+      <div class="modalBig">
+        <div class="modalCountainer">
           <div class="bg-white">
             <h2 class="text-center text-5xl mb-20">ورود به حساب کاربری</h2>
             <inputUser
@@ -121,9 +125,10 @@ const doLogOut = () => {
               @changePassword="(password) => (state.password = password)"
               class="mb-12" />
             <fillbutton @click="doLogIn" class="w-full h-14" title="ورود" />
+            <p class="text-center mt-6 text-my-red">{{ state.errorMsg }}</p>
           </div>
           <Icons-closeIcon
-            @click="displayLogin = 'h-0'"
+            @click="state.displayLogin = 'h-0'"
             class="absolute top-8 left-8 z-20 stroke-my-green" />
         </div>
       </div>
