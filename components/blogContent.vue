@@ -1,9 +1,23 @@
 <script setup>
-const state = reactive({ showingPosts: {} });
+const state = reactive({ showingPosts: [], postArray: [], page: 1 });
 const { data: posts } = await useFetch("https://challenge.webjar.ir/posts");
-state.showingPosts = posts.value;
+posts.value.map((post) => {
+  state.postArray.push(post);
+});
+const paginate = (postArray) => {
+  state.showingPosts = postArray.slice(
+    (state.page - 1) * 10,
+    (state.page - 1) * 10 + 9
+  );
+};
+paginate(state.postArray);
+watch(
+  () => state.postArray,
+  (postArray) => paginate(postArray)
+);
+
 const contentSearch = (data) => {
-  state.showingPosts = posts.value.filter((post) => {
+  state.postArray = posts.value.filter((post) => {
     if (post?.title.includes(data)) return post;
   });
 };
