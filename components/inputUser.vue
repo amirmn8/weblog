@@ -3,20 +3,20 @@
     <input
       style="direction: rtl"
       placeholder="نام کاربری خود را وارد کنید"
-      class="rounded-2xl w-full h-14 pr-12"
+      class="rounded-2xl w-full h-14 pr-12 focus:outline-my-green focus:text-my-green"
       type="text" />
     <svg
       class="absolute top-4 right-4"
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      fill="none"
+      fill=""
       xmlns="http://www.w3.org/2000/svg">
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M12.0001 2.75C10.0473 2.75 8.46436 4.33299 8.46436 6.28571C8.46436 8.23844 10.0473 9.82143 12.0001 9.82143C13.9528 9.82143 15.5358 8.23844 15.5358 6.28571C15.5358 4.33299 13.9528 2.75 12.0001 2.75ZM6.96436 6.28571C6.96436 3.50457 9.21892 1.25 12.0001 1.25C14.7812 1.25 17.0358 3.50457 17.0358 6.28571C17.0358 9.06686 14.7812 11.3214 12.0001 11.3214C9.21892 11.3214 6.96436 9.06686 6.96436 6.28571Z"
-        fill="black"
+        fill=""
         fill-opacity="0.2" />
       <path
         fill-rule="evenodd"

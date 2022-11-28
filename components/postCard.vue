@@ -13,10 +13,10 @@ const props = defineProps([
     <div class="2xl:ml-16">
       <img class="cardImage" :src="image" />
     </div>
-    <div class="flex flex-col flex-start px-6 2xl:px-0">
+    <div class="flex flex-col flex-start px-6 2xl:px-0 pb-6">
       <h2 class="mt-8 text-lg text-miniText font-medium">{{ title }}</h2>
       <p class="splitText">
-        {{ body.split(" ").slice(0, 25).join(" ") }}
+        {{ body.split(" ").slice(0, 40).join(" ") }}
       </p>
       <div style="direction: rtl" class="postDetail">
         <div class="postDetailLi">
