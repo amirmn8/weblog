@@ -19,6 +19,7 @@ module.exports = {
       'my-fill-btn': '0 5px 10px 0 rgba(0, 200, 83,0.25)',
       'search': '0 0px 10px 0 rgba(0, 0, 0,0.05)',
       'cardshadow': '0 0px 30px 0 rgba(0, 200, 83,0.05)',
+      'page': '0 0px 10px 0 rgba(0, 200, 83,.1)',
      
       
     }  ,
