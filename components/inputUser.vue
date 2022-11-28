@@ -1,10 +1,9 @@
 <template>
   <div class="relative border border-inputBorder rounded-2xl">
-    <label class="absolute -top-8 right-0 text-lg">نام کاربری</label>
     <input
       style="direction: rtl"
       placeholder="نام کاربری خود را وارد کنید"
-      class="rounded-2xl w-102 h-14 pr-10"
+      class="rounded-2xl w-full h-14 pr-12"
       type="text" />
     <svg
       class="absolute top-4 right-4"
@@ -26,5 +25,6 @@
         fill="black"
         fill-opacity="0.2" />
     </svg>
+    <label class="absolute -top-8 right-0 text-lg">نام کاربری</label>
   </div>
 </template>

@@ -14,6 +14,9 @@
 .fillBtn{
   @apply  bg-my-green text-white cursor-pointer rounded-2xl flex items-center justify-center hover:shadow-my-fill-btn active:border-0 active:bg-my-green-fade focus:border-2 focus:border-borderbtn
 }
+.categoryLi{
+ @apply flex flex-row justify-between items-center mb-8 mr-6 ml-7 text-lg text-category
+}
 *{
 font-family: 'IRANYekan';
 font-size: large;

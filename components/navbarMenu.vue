@@ -1,8 +1,8 @@
 <template>
   <div
-    class="h-6vw bg-white shadow-mine flex flex-row-reverse items-center justify-center">
+    class="h-6vw bg-white shadow-mine hidden xl:flex flex-row-reverse items-center justify-center">
     <ul
-      class="flex justify-between items-center text-xl h-full w-full mx-200px">
+      class="flex justify-between items-center text-xl h-full w-full xl:mx-200px mx-8">
       <div>
         <li class="liMenu">
           <!-- دکمه -->

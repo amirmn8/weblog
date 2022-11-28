@@ -4,7 +4,7 @@
     <input
       style="direction: rtl"
       placeholder=" رمز عبور خود را وارد کنید"
-      class="rounded-2xl w-102 h-14 pr-10"
+      class="rounded-2xl w-full h-14 pr-12"
       type="password" />
     <svg
       class="absolute top-4 right-4"
